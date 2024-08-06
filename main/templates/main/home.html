@@ -1,0 +1,84 @@
+{% extends "main/layout.html" %}
+{% block title %}
+Log a message
+{% endblock %}
+{% block content %}
+{% load static %}
+<section id="appointment" data-stellar-background-ratio="3">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-6 col-sm-6">
+                    <img src="{% static 'main/images/appointment-image.jpg' %}" class="img-responsive" alt="">
+               </div>
+
+               <div class="col-md-6 col-sm-6">
+                    <!-- CONTACT FORM HERE -->
+                    <form id="appointment-form" role="form" method="post" action="#">
+                         {% csrf_token %}
+                         <!-- SECTION TITLE -->
+                         <div class="section-title wow fadeInUp" data-wow-delay="0.4s">
+                              <h2>Make a request</h2>
+                         </div>
+
+                         <div class="wow fadeInUp" data-wow-delay="0.8s">
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.age.id_for_label }}">Age</label>
+                                   {{ form.age }}
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.gender.id_for_label }}">Gender</label>
+                                   {{ form.gender }}
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.symptoms.id_for_label }}">Symptons</label>
+                                   {{ form.symptoms }}
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.history.id_for_label }}">History</label>
+                                   {{ form.history }}
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.family.id_for_label }}">Family history</label>
+                                   {{ form.family }}
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.lifestyle.id_for_label }}">Lifestyle</label>
+                                   {{ form.lifestyle }}
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.tests.id_for_label }}">Tests and results</label>
+                                   {{ form.tests }}
+                              </div>
+                              <div class="col-md-6 col-sm-6">
+                                   <label for="{{ form.other.id_for_label }}">Other</label>
+                                   {{ form.other }}
+                              </div>
+                              <button type="submit" class="form-control" id="cf-submit" name="submit">Get a diagnosis</button>
+                         </div>
+                    </form>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+<section id="about">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-6 col-sm-6">
+                    <div class="about-info">
+                         <h2 class="wow fadeInUp" data-wow-delay="0.6s"><i class="fa">D</i>octor<i class="fa">G</i> Diagnosis</h2>
+                         <div class="wow fadeInUp" data-wow-delay="0.8s">
+                              {{ response|safe }}
+                         </div>
+                    </div>
+               </div>
+               
+          </div>
+     </div>
+</section>
+
+
+{% endblock %}
